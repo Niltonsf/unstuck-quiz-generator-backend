@@ -1,6 +1,5 @@
 import json
 import uuid
-from app.services.encryption import encrypt_answer
 
 def parse_questions_string(questions_str: str):
     try:
@@ -11,8 +10,8 @@ def parse_questions_string(questions_str: str):
 
             question["id"] = str(uuid.uuid4())
             
-            if "answer" in question:
-                question["answer"] = encrypt_answer(question["answer"])
+            if "answer" in question:                
+                question["answer"] = [question["answer"]]
                 
         return questions_obj
     except json.JSONDecodeError:
