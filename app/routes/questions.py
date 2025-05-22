@@ -11,6 +11,7 @@ router = APIRouter()
 
 MAX_FILE_SIZE_KB = 500
 MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_KB * 1024
+MAX_ALLOWED_PAGES = 3
 
 @router.post("/generate")
 async def upload_pdf(file: UploadFile = File(...)):
@@ -27,10 +28,10 @@ async def upload_pdf(file: UploadFile = File(...)):
         
         if not text:                        
             raise HTTPException(status_code=400, detail="PDF is empty.")
-        if num_pages > 2:            
+        if num_pages > MAX_ALLOWED_PAGES:            
             raise HTTPException(status_code=400, detail="Only single-page PDFs are allowed.")
 
-        questions = generate_questions_from_text(text)         
+        questions = generate_questions_from_text(text) 
 
         title = file.filename.split(".")[0]
 
