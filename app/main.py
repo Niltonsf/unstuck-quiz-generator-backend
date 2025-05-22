@@ -5,9 +5,7 @@ from app.routes import questions, quiz
 app = FastAPI()
 
 origins = [
-    "http://localhost:3000",
-    "http://192.168.1.8:3000",
-    "http://192.168.1.8"    
+    "https://www.unstuck-quiz.com",    
 ]
 
 app.add_middleware(
