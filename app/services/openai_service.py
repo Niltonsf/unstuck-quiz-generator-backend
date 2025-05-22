@@ -23,6 +23,7 @@ def generate_questions_from_text(text: str) -> str:
 
     response = client.chat.completions.create(
         model="gpt-4-1106-preview",        
+        # model="gpt-3.5-turbo",
         messages=[
             {"role": "user", "content": prompt}
         ],
