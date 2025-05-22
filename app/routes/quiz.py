@@ -16,10 +16,15 @@ async def create_quiz(data: CreateQuizRequest):
 async def validate_answer(request: ValidateAnswerRequest):
     try:
         decrypted_answers = [decrypt_answer(answer) for answer in request.question.answer]
+
         if not decrypted_answers:
             raise HTTPException(status_code=400, detail="No answers found.")
+                 
+        user_answers = request.userAnswer
         
-        is_correct = request.userAnswer in decrypted_answers
+        is_correct = (
+            set(user_answers) == set(decrypted_answers)
+        )
 
         return {
             "isCorrect": is_correct,

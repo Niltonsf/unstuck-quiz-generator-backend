@@ -13,7 +13,7 @@ class Question(BaseModel):
 
 class ValidateAnswerRequest(BaseModel):
     question: Question
-    userAnswer: str
+    userAnswer: List[str]
 
 class CreateQuizRequest(BaseModel):
     data: List[Question]   
