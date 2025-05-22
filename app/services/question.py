@@ -1,4 +1,3 @@
-import json
 from app.services.encryption import encrypt_answer
 from app.models import Question
 from typing import List
