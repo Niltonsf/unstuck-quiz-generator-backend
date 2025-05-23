@@ -14,6 +14,8 @@ build/
 venv
 venv/
 
+unstuck-firebase-private-key.json
+
 htmlcov/
 .coverage
 .tox/

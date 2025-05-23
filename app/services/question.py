@@ -4,9 +4,10 @@ from typing import List
 
 def encrypt_question_answer(questions: List[Question]):
   for question in questions:
-    question.answer = [
-        encrypt_answer(answer) for answer in question.answer
-    ]
+    if 'isCorrect' not in question:
+      question['answers'] = [
+          encrypt_answer(answer) for answer in question['answers']
+      ]
 
   return questions
     

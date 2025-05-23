@@ -8,14 +8,21 @@ class Question(BaseModel):
     id: str
     question: str
     options: List[dict]
-    answer: List[str]
+    answers: List[str]
     questionNumber: int
 
+class QuestionExplainRequest(BaseModel):
+    question: str
+    user_response: str
+    
 class ValidateAnswerRequest(BaseModel):
+    id: str
+    questionId: str
     question: Question
     userAnswer: List[str]
 
 class CreateQuizRequest(BaseModel):
+    quizId: str
     data: List[Question]   
 
 class DecryptQuizRequest(BaseModel):
